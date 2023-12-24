@@ -1,14 +1,34 @@
 import style from "../styles/login.module.css";
 import { useState } from "react";
 const Login = () => {
-  const [nameError, setNError] = useState(true);
-  const [cNumError, setNumError] = useState(true);
-  const [dateError, setDateError] = useState(true);
-  const [cvcError, setCvcError] = useState(true);
+  const [nameError, setNError] = useState(false);
+  const [cNumBlankError, setNumBlankError] = useState(false);
+  const [cNumFormatError, setNumFormatError] = useState(false);
+  const [dateError, setDateError] = useState(false);
+  const [cvcError, setCvcError] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (Number(document.getElementById("cardNum").value) == NaN) {
-      console.log("true");
+    setNError(false);
+    setNumBlankError(false);
+    setNumFormatError(false);
+    setDateError(false);
+    setCvcError(false);
+
+    let name = document.getElementById("holderName").value;
+    let cardNum = document.getElementById("cardNum").value;
+    let date = document.getElementById("dateMonth").value;
+    let dateYear = document.getElementById("dateYear").value;
+    let cvc = document.getElementById("cvc").value;
+    if (name == "") {
+      setNError(true);
+    } else if (cardNum == "") {
+      setNumBlankError(true);
+    } else if (isNaN(cardNum)) {
+      setNumFormatError(true);
+    } else if (date == "" || dateYear == "") {
+      setDateError(true);
+    } else if (cvc == "") {
+      setCvcError(true);
     }
   };
   return (
@@ -41,6 +61,24 @@ const Login = () => {
             id="cardNum"
             placeholder="e.g. 1234 5678 9123 0000"
           />
+          {cNumBlankError == true ? (
+            <>
+              <br />
+              <strong className={style.error}>Can't be blank</strong>
+            </>
+          ) : (
+            <></>
+          )}
+          {cNumFormatError == true ? (
+            <>
+              <br />
+              <strong className={style.error}>
+                Wrong format, numbers only
+              </strong>
+            </>
+          ) : (
+            <></>
+          )}
         </section>
         <section style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
           <div>
@@ -60,11 +98,27 @@ const Login = () => {
               name="date"
               placeholder="YY"
             />
+            {dateError == true ? (
+              <>
+                <br />
+                <strong className={style.error}>Can't be blank</strong>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
           <div>
             <label htmlFor="CVC">cvc</label>
             <br />
             <input type="number" name="CVC" id="cvc" placeholder="e.g. 123" />
+            {cvcError == true ? (
+              <>
+                <br />
+                <strong className={style.error}>Can't be blank</strong>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </section>
         <button type="submit">Confirm</button>
