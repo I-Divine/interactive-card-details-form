@@ -9,7 +9,9 @@ const Card_BG = () => {
     <div className={styles.bgMain}>
       {/* <img className={styles.bgImg} src={bg_img} alt="" /> */}
       {/* <img src={cardImgBack} alt="" /> */}
-      <div className={styles.cardBack}></div>
+      <div className={styles.cardBack}>
+        <div>000</div>
+      </div>
       <div className={styles.cardFront}>
         <img className={styles.cardLogo} src={cardLogo} alt="" />
         <div style={{ marginTop: "10px", color: "white", fontSize: "1.7em" }}>
