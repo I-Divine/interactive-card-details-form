@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 .cardFront {
   /* var(--card-width): 300px; */
   /* --card-hieght: calc(300 * 0.52px); */
@@ -11,8 +12,8 @@
   /* background-position: 0px 0px; */
   /* border-radius: 5px; */
   position: absolute;
-  bottom: -30px;
-  left: 5%;
+  /* bottom: -30px; */
+  /* left: 5%; */
   /* transform: translate(0%, 20px); */
   width: 270px;
   height: 140px;
@@ -25,8 +26,8 @@
   /* background-position: -20px -20px; */
   position: absolute;
   /* transform: translate(50%, 20px); */
-  bottom: 50px;
-  right: 5%;
+  /* bottom: 50px; */
+  /* right: 5%; */
   border-radius: 5px;
   width: 270px;
   height: 140px;
@@ -35,7 +36,7 @@
   width: 60px;
 }
 .bgImg {
-  width: 120%;
+  width: 100%;
   z-index: -10;
   position: absolute;
   left: 0px;
@@ -59,4 +60,59 @@
 }
 body {
   margin: 0px;
+}
+@media screen and (max-width: 719px) {
+  body {
+    overflow-x: hidden;
+  }
+  .cardFront {
+    left: 5%;
+    bottom: -30px;
+  }
+  .cardBack {
+    right: 5%;
+    bottom: 50px;
+  }
+}
+@media screen and (min-width: 720px) {
+  body {
+    overflow: hidden;
+  }
+  .bgMain {
+    height: 100vh;
+    background-image: url("../images/bg-main-desktop.png");
+  }
+  .cardFront {
+    transform: translate(0%, -60%);
+    right: -40px;
+    top: 40%;
+  }
+  .cardBack {
+    transform: translate(0%, 60%);
+
+    right: -20px;
+    top: 40%;
+  }
+}
+@media screen and (min-width: 800px) {
+  .cardBack {
+    right: -70px;
+  }
+  .cardFront {
+    right: -40px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .cardBack {
+    right: -200px;
+    background-size: 320px 170px;
+    width: 320px;
+    height: 170px;
+  }
+  .cardFront {
+    background-size: 320px 170px;
+    width: 320px;
+    height: 170px;
+    right: -100px;
+  }
 }
