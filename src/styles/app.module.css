@@ -1,0 +1,7 @@
+@media screen and (min-width: 700px) {
+  .app {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    font-family: "Space Grotesk", sans-serif;
+  }
+}
