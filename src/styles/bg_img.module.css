@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+.cardFront {
+  /* var(--card-width): 300px; */
+  /* --card-hieght: calc(300 * 0.52px); */
+  background-image: url("../images/bg-card-front.png");
+  background-repeat: no-repeat;
+  background-size: 270px 140px;
+  padding: 15px;
+  /* background-position: 0px 0px; */
+  /* border-radius: 5px; */
+  position: absolute;
+  bottom: -30px;
+  left: 5%;
+  /* transform: translate(0%, 20px); */
+  width: 270px;
+  height: 140px;
+}
+.cardBack {
+  background-image: url("../images/bg-card-back.png");
+  background-repeat: no-repeat;
+  background-size: 270px 140px;
+  /* padding: 10px; */
+  /* background-position: -20px -20px; */
+  position: absolute;
+  /* transform: translate(50%, 20px); */
+  bottom: 50px;
+  right: 5%;
+  border-radius: 5px;
+  width: 270px;
+  height: 140px;
+}
+.cardLogo {
+  width: 60px;
+}
+.bgImg {
+  width: 120%;
+  z-index: -10;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.bgMain {
+  width: 100%;
+  /* box-sizing: ; */
+  background-image: url("../images/bg-main-mobile.png");
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* left: -20px; */
+  position: relative;
+  /* width: 120%; */
+  /* box-sizing: content-box; */
+  padding: 50px;
+  /* margin: none; */
+  /* overflow-x: hidden; */
+  margin-bottom: 100px;
+}
+body {
+  margin: 0px;
+}
