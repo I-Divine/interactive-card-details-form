@@ -1,4 +1,5 @@
 import style from "../styles/login.module.css";
+import completedIcon from "../images/icon-complete.svg";
 import { useState } from "react";
 const Login = () => {
   const [nameError, setNError] = useState(false);
@@ -6,6 +7,8 @@ const Login = () => {
   const [cNumFormatError, setNumFormatError] = useState(false);
   const [dateError, setDateError] = useState(false);
   const [cvcError, setCvcError] = useState(false);
+
+  const [completed, setCompleted] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     setNError(false);
@@ -29,76 +32,47 @@ const Login = () => {
       setDateError(true);
     } else if (cvc == "") {
       setCvcError(true);
+    } else {
+      setCompleted(true);
     }
   };
-  return (
-    <>
-      <form className={style.login} onSubmit={handleSubmit}>
-        <section>
-          <label htmlFor="holderName">cardholder name </label>
-          <br />
-          <input
-            type="text"
-            id="holderName"
-            name="holderName"
-            placeholder="e.g. Jane Appleseed"
-          />
-          {nameError == true ? (
-            <>
-              <br />
-              <strong className={style.error}>Can't be blank</strong>
-            </>
-          ) : (
-            <></>
-          )}
-        </section>
-        <section>
-          <label htmlFor="cardNum">card number</label>
-          <br />
-          <input
-            type="tel"
-            name="cardNum"
-            id="cardNum"
-            placeholder="e.g. 1234 5678 9123 0000"
-          />
-          {cNumBlankError == true ? (
-            <>
-              <br />
-              <strong className={style.error}>Can't be blank</strong>
-            </>
-          ) : (
-            <></>
-          )}
-          {cNumFormatError == true ? (
-            <>
-              <br />
-              <strong className={style.error}>
-                Wrong format, numbers only
-              </strong>
-            </>
-          ) : (
-            <></>
-          )}
-        </section>
-        <section style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+  if (completed) {
+    return (
+      <>
+        <div
+          className={style.login}
+          id={style.completed}
+          style={{ textAlign: "center" }}
+        >
           <div>
-            <label htmlFor="date">Exp. date (mm/yy)</label>
+            <img
+              style={{ position: "relative", bottom: "20px" }}
+              src={completedIcon}
+              alt=""
+            />
+          </div>
+          <div style={{ fontSize: "2em", textTransform: "uppercase" }}>
+            Thank You !!!
+          </div>
+          <div style={{ marginTop: "10px" }}>We've added your card details</div>
+          <button>Continue</button>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <form className={style.login} onSubmit={handleSubmit}>
+          <section>
+            <label htmlFor="holderName">cardholder name </label>
             <br />
             <input
-              style={{ width: "30%" }}
-              type="number"
-              id="dateMonth"
-              name="date"
-              placeholder="MM"
+              type="text"
+              id="holderName"
+              name="holderName"
+              placeholder="e.g. Jane Appleseed"
             />
-            <input
-              style={{ width: "30%" }}
-              type="number"
-              id="dateYear"
-              name="date"
-              placeholder="YY"
-            />
-            {dateError == true ? (
+            {nameError == true ? (
               <>
                 <br />
                 <strong className={style.error}>Can't be blank</strong>
@@ -106,12 +80,17 @@ const Login = () => {
             ) : (
               <></>
             )}
-          </div>
-          <div>
-            <label htmlFor="CVC">cvc</label>
+          </section>
+          <section>
+            <label htmlFor="cardNum">card number</label>
             <br />
-            <input type="number" name="CVC" id="cvc" placeholder="e.g. 123" />
-            {cvcError == true ? (
+            <input
+              type="tel"
+              name="cardNum"
+              id="cardNum"
+              placeholder="e.g. 1234 5678 9123 0000"
+            />
+            {cNumBlankError == true ? (
               <>
                 <br />
                 <strong className={style.error}>Can't be blank</strong>
@@ -119,12 +98,63 @@ const Login = () => {
             ) : (
               <></>
             )}
-          </div>
-        </section>
-        <button type="submit">Confirm</button>
-      </form>
-    </>
-  );
+            {cNumFormatError == true ? (
+              <>
+                <br />
+                <strong className={style.error}>
+                  Wrong format, numbers only
+                </strong>
+              </>
+            ) : (
+              <></>
+            )}
+          </section>
+          <section style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+            <div>
+              <label htmlFor="date">Exp. date (mm/yy)</label>
+              <br />
+              <input
+                style={{ width: "30%" }}
+                type="number"
+                id="dateMonth"
+                name="date"
+                placeholder="MM"
+              />
+              <input
+                style={{ width: "30%" }}
+                type="number"
+                id="dateYear"
+                name="date"
+                placeholder="YY"
+              />
+              {dateError == true ? (
+                <>
+                  <br />
+                  <strong className={style.error}>Can't be blank</strong>
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
+            <div>
+              <label htmlFor="CVC">cvc</label>
+              <br />
+              <input type="number" name="CVC" id="cvc" placeholder="e.g. 123" />
+              {cvcError == true ? (
+                <>
+                  <br />
+                  <strong className={style.error}>Can't be blank</strong>
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
+          </section>
+          <button type="submit">Confirm</button>
+        </form>
+      </>
+    );
+  }
 };
 
 export default Login;

@@ -5,7 +5,16 @@
   font-family: "Space Grotesk", sans-serif;
 }
 .login label {
-  text-transform: capitalize;
+  text-transform: uppercase;
+}
+.login input:focus {
+  /* border-image: linear-gradient(left, hsl(249, 99%, 64%), hsl(278, 94%, 30%)); */
+  outline: none;
+  border: 1px solid;
+  border-radius: 5px;
+  border-image-source: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+  border-image-slice: 1;
+  /* cursor: pointer; */
 }
 .login ::placeholder {
   color: rgba(158, 156, 156, 0.486);
@@ -42,10 +51,4 @@
   font-weight: 600;
   color: red;
   font-size: 0.7em;
-}
-.login input:active,
-.login input:focus {
-  /* border-image: linear-gradient(left, hsl(249, 99%, 64%), hsl(278, 94%, 30%)); */
-  border: 1px solid blue;
-  cursor: pointer;
 }
