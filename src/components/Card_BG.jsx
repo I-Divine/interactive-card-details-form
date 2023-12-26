@@ -14,11 +14,15 @@ const Card_BG = () => {
       </div>
       <div className={styles.cardFront}>
         <img className={styles.cardLogo} src={cardLogo} alt="" />
-        <div style={{ marginTop: "10px", color: "white", fontSize: "1.7em" }}>
+        <br />
+
+        <div style={{ marginTop: "30px", color: "white", fontSize: "1.3em" }}>
           0000 0000 0000 0000
         </div>
         <div
           style={{
+            marginTop: "10px",
+            fontSize: ".9em",
             display: "flex",
             color: "white",
             justifyContent: "space-between",
